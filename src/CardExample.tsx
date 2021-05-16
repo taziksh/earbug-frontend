@@ -1,29 +1,26 @@
-import * as React from "react";
-import { H3, Card, Colors, Classes, Icon } from "@blueprintjs/core";
-import {
-  ELEVATION_1,
-  ELEVATION_2
-} from "@blueprintjs/core/lib/esm/common/classes";
-import "./app.scss";
+import * as React from 'react';
+import { H3, Card, Colors, Classes, Elevation, Icon } from '@blueprintjs/core';
+import { IconName, IconNames } from '@blueprintjs/icons';
+import './app.scss';
 
 const cardStyles = {
-  margin: "4% 8%"
+  margin: '4% 8%'
 };
 
 const headerStyles = {
   color: Colors.BLUE4,
-  display: "flex",
-  justifyContent: "center"
+  display: 'flex',
+  justifyContent: 'center'
 };
 
 const iconStyles = {
-  marginTop: "1%",
-  marginRight: "1%"
+  marginTop: '1%',
+  marginRight: '1%'
 };
 
 export interface CardExampleProps {
   header: string;
-  icon: string;
+  icon: IconName;
 }
 
 export class CardExample extends React.PureComponent<
@@ -35,7 +32,7 @@ export class CardExample extends React.PureComponent<
         style={cardStyles}
         className={Classes.MINIMAL}
         interactive={false}
-        elevation={ELEVATION_2}
+        elevation={Elevation.TWO}
         onClick={this.handleClickChange}
       >
         <H3 className={Classes.HEADING} style={headerStyles}>
@@ -47,6 +44,6 @@ export class CardExample extends React.PureComponent<
     );
   }
   private handleClickChange = () => {
-    return <div></div>;
-  };
+    return <div/>;
+  }
 }
