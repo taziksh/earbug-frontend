@@ -4,11 +4,11 @@
  * Licensed under the terms of the LICENSE file distributed with this project.
  */
 
-import { MenuItem } from "@blueprintjs/core";
-import { ItemPredicate, ItemRenderer } from "@blueprintjs/select";
-import * as React from "react";
+import { MenuItem } from '@blueprintjs/core';
+import { ItemPredicate, ItemRenderer } from '@blueprintjs/select';
+import * as React from 'react';
 
-export interface ISong {
+export interface InterfaceSong {
   /** Title of song. */
   title: string;
   /** Artist name. */
@@ -17,15 +17,15 @@ export interface ISong {
   art: string;
 }
 
-export const TOP_100_SONGS: ISong[] = [
+export const TOP_100_SONGS: InterfaceSong[] = [
   {
-    title: "Wait For It",
-    artist: "Lin Manuel Miranda",
-    art: "https://tinyurl.com/hamimg"
+    title: 'Wait For It',
+    artist: 'Lin Manuel Miranda',
+    art: 'https://tinyurl.com/hamimg'
   }
 ].map((m, index) => ({ ...m }));
 
-export const renderSong: ItemRenderer<ISong> = (
+export const renderSong: ItemRenderer<InterfaceSong> = (
   song,
   { handleClick, modifiers, query }
 ) => {
@@ -45,7 +45,7 @@ export const renderSong: ItemRenderer<ISong> = (
   );
 };
 
-export const filterSong: ItemPredicate<ISong> = (query, song) => {
+export const filterSong: ItemPredicate<InterfaceSong> = (query, song) => {
   return (
     `${song.title.toLowerCase()} ${song.artist}`.indexOf(
       query.toLowerCase()
@@ -62,7 +62,7 @@ function highlightText(text: string, query: string) {
   if (words.length === 0) {
     return [text];
   }
-  const regexp = new RegExp(words.join("|"), "gi");
+  const regexp = new RegExp(words.join('|'), 'gi');
   const tokens: React.ReactNode[] = [];
   while (true) {
     const match = regexp.exec(text);
@@ -85,7 +85,7 @@ function highlightText(text: string, query: string) {
 }
 
 function escapeRegExpChars(text: string) {
-  return text.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+  return text.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
 }
 
 export const songSuggestProps = {

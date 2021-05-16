@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   Alignment,
   AnchorButton,
@@ -6,7 +6,7 @@ import {
   NavbarGroup,
   NavbarHeading,
   NavbarDivider
-} from "@blueprintjs/core";
+} from '@blueprintjs/core';
 
 const navbarStyles = {};
 
@@ -25,14 +25,14 @@ export class Navigation extends React.PureComponent<NavigationProps> {
             href="http://blueprintjs.com/docs"
             text="Docs"
             target="_blank"
-            minimal
+            minimal={true}
             rightIcon="share"
           />
           <AnchorButton
             href="http://github.com/palantir/blueprint"
             text="Github"
             target="_blank"
-            minimal
+            minimal={true}
             rightIcon="code"
           />
         </NavbarGroup>
