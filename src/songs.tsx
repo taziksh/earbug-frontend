@@ -4,28 +4,27 @@
  * Licensed under the terms of the LICENSE file distributed with this project.
  */
 
-import { MenuItem } from '@blueprintjs/core';
-import { ItemPredicate, ItemRenderer } from '@blueprintjs/select';
-import * as React from 'react';
+import { MenuItem } from "@blueprintjs/core";
+import { ItemPredicate, ItemRenderer } from "@blueprintjs/select";
+import * as React from "react";
 
-export interface InterfaceSong {
-  /** Title of song. */
+export interface Song {
   title: string;
-  /** Artist name. */
   artist: string;
-  /** Album cover */
   art: string;
+  duration: any;
 }
 
-export const TOP_100_SONGS: InterfaceSong[] = [
+export const TOP_10_MATCHES: Song[] = [
   {
-    title: 'Wait For It',
-    artist: 'Lin Manuel Miranda',
-    art: 'https://tinyurl.com/hamimg'
+    title: "Wait For It",
+    artist: "Lin Manuel Miranda",
+    art: "https://tinyurl.com/hamimg",
+    duration: 193000
   }
 ].map((m, index) => ({ ...m }));
 
-export const renderSong: ItemRenderer<InterfaceSong> = (
+export const renderSong: ItemRenderer<Song> = (
   song,
   { handleClick, modifiers, query }
 ) => {
@@ -45,7 +44,7 @@ export const renderSong: ItemRenderer<InterfaceSong> = (
   );
 };
 
-export const filterSong: ItemPredicate<InterfaceSong> = (query, song) => {
+export const filterSong: ItemPredicate<Song> = (query, song) => {
   return (
     `${song.title.toLowerCase()} ${song.artist}`.indexOf(
       query.toLowerCase()
@@ -62,7 +61,7 @@ function highlightText(text: string, query: string) {
   if (words.length === 0) {
     return [text];
   }
-  const regexp = new RegExp(words.join('|'), 'gi');
+  const regexp = new RegExp(words.join("|"), "gi");
   const tokens: React.ReactNode[] = [];
   while (true) {
     const match = regexp.exec(text);
@@ -85,11 +84,11 @@ function highlightText(text: string, query: string) {
 }
 
 function escapeRegExpChars(text: string) {
-  return text.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
+  return text.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 }
 
 export const songSuggestProps = {
   itemPredicate: null,
   itemRenderer: renderSong,
-  items: TOP_100_SONGS
+  items: TOP_10_MATCHES
 };
