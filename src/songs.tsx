@@ -17,7 +17,7 @@ export interface Song {
 
 export const TOP_10_MATCHES: Song[] = [
   {
-    title: "Wait For It",
+    title: "Alexander Hamilton",
     artist: "Lin Manuel Miranda",
     art: "https://tinyurl.com/hamimg",
     duration: 193000

@@ -37,7 +37,7 @@ export class BpSuggest extends React.PureComponent<{}, Suggestions> {
 
   private handleItemSelect = (selected: Songs.Song) => {
     this.setState((oldState) => {
-      return { selected: selected, query: oldState.query };
+      return { selected: selected, query: "", options: [] };
     });
   };
 
@@ -61,6 +61,7 @@ export class BpSuggest extends React.PureComponent<{}, Suggestions> {
 
     if (!response.ok) throw new Error("Search Spotify Error");
     const data = await response.json();
+    console.log("Options: ", data);
     this.setState((oldState) => {
       return { options: data, query: searched };
     });
@@ -83,8 +84,8 @@ export class BpSuggest extends React.PureComponent<{}, Suggestions> {
               onItemSelect={this.handleItemSelect}
               inputValueRenderer={this.handleRender}
               onQueryChange={this.debounceHandleQueryChange}
-              resetOnClose={true}
               fill={false}
+              noResults
               popoverProps={{ minimal: true }}
             />
           </div>
